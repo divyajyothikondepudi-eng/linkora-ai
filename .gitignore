@@ -1,0 +1,43 @@
+
+.env
+.env.*
+!.env.example
+
+venv/
+.venv/
+env/
+
+__pycache__/
+*.py[cod]
+
+instance/
+*.db
+*.sqlite
+*.sqlite3
+*.log
+
+uploads/
+user_uploads/
+
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Environment and local configuration
+instance/
+.env.local
+
+# Test and coverage files
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build and distribution files
+build/
+dist/
+*.egg-info/
+
+# Local IDE settings
+.vscode/
+.idea/

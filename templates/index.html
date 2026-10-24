@@ -1,0 +1,433 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>Linkora AI | LinkedIn Writing Assistant</title>
+    <meta
+        name="description"
+        content="Create professional LinkedIn posts from certificates, achievements, projects, and your own ideas."
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/home.css') }}"
+    >
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+    <script
+        src="{{ url_for('static', filename='js/chat.js') }}"
+        defer
+    ></script>
+</head>
+
+<body>
+<div class="app-shell">
+
+    <!-- Sidebar backdrop for mobile -->
+    <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-top">
+            <a class="brand" href="/">
+                <span class="brand-icon">L</span>
+                <span>Linkora <strong>AI</strong></span>
+            </a>
+
+            <button
+                id="closeSidebar"
+                class="icon-button mobile-close"
+                type="button"
+                aria-label="Close sidebar"
+            >×</button>
+        </div>
+
+        <button id="newChatBtn" class="new-chat-btn" type="button">
+            <span class="new-chat-plus">＋</span>
+            <span class="nav-label">New chat</span>
+        </button>
+
+        <label class="search-box" for="historySearch">
+            <span aria-hidden="true">⌕</span>
+            <input
+                id="historySearch"
+                type="search"
+                placeholder="Search conversations"
+                aria-label="Search chat history"
+                autocomplete="off"
+            >
+        </label>
+
+        <div class="history-heading">YOUR CONVERSATIONS</div>
+
+        <div
+            id="chatHistory"
+            class="chat-history"
+            aria-label="Previous conversations"
+        >
+            <p class="empty-history">Your conversations will appear here.</p>
+        </div>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-tip">
+                <span class="tip-icon" aria-hidden="true">✦</span>
+                <div class="sidebar-tip-copy">
+                    <strong>Make your ideas stand out</strong>
+                    <p>Turn your achievements into professional LinkedIn posts.</p>
+                </div>
+            </div>
+
+            <button
+                id="themeToggle"
+                class="sidebar-action"
+                type="button"
+                aria-label="Toggle light and dark mode"
+            >
+                <span id="themeIcon" class="action-icon" aria-hidden="true">☾</span>
+                <span id="themeLabel" class="nav-label">Dark mode</span>
+            </button>
+
+            <div class="user-profile" id="userProfile">
+                <div id="userAvatar" class="avatar">L</div>
+
+                <div class="user-details">
+                    <strong id="userName">Loading...</strong>
+                    <span>Personal account</span>
+                </div>
+
+                <button
+                    id="profileMenuBtn"
+                    class="icon-button profile-trigger"
+                    type="button"
+                    aria-label="Open profile menu"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    aria-controls="profileMenu"
+                >•••</button>
+
+                <div id="profileMenu" class="profile-menu hidden">
+                    <div class="profile-menu-user">
+                        <strong id="profileMenuName">Loading...</strong>
+                        <span id="profileMenuEmail">Loading account...</span>
+                    </div>
+
+                    <div class="profile-menu-divider"></div>
+
+                    <button id="addAccountBtn" type="button">
+                        ＋ Add account
+                    </button>
+
+                    <button id="logoutBtn" type="button">
+                        ↪ Log out
+                    </button>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CHAT PANEL -->
+    <main class="main-panel">
+
+        <!-- Toolbar -->
+        <div class="chat-toolbar">
+            <button
+                id="openSidebar"
+                class="icon-button menu-button"
+                type="button"
+                aria-label="Toggle sidebar"
+                aria-controls="sidebar"
+            >☰</button>
+
+            <div class="toolbar-title">
+                Linkora <strong>AI</strong>
+            </div>
+
+            <div class="toolbar-status">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span>LinkedIn writing assistant</span>
+            </div>
+        </div>
+
+        <!-- CHAT AREA -->
+        <section class="chat-area" aria-label="Chat conversation">
+
+            <!-- Welcome screen -->
+            <div id="welcomeScreen" class="welcome-screen">
+                <div class="welcome-mark">L<span>✦</span></div>
+
+                <div class="eyebrow">
+                    YOUR LINKEDIN WRITING PARTNER
+                </div>
+
+                <h1>
+                    Make your next post<br>
+                    <span>worth stopping for.</span>
+                </h1>
+
+                <p class="welcome-description">
+                    Upload a certificate, share an achievement, or describe
+                    your idea. Linkora AI will help you create professional,
+                    engaging LinkedIn content.
+                </p>
+
+                <!-- Interactive prompt suggestions -->
+                <div class="suggestion-grid">
+                    <button
+                        class="suggestion-card"
+                        type="button"
+                        data-prompt="Give me five thoughtful LinkedIn post ideas for a student learning AI and machine learning."
+                    >
+                        <span class="suggestion-icon blue">✧</span>
+                        <strong>Generate post ideas</strong>
+                        <span>Find a fresh topic to write about.</span>
+                        <span class="suggestion-arrow">↗</span>
+                    </button>
+
+                    <button
+                        class="suggestion-card"
+                        type="button"
+                        data-prompt="Help me improve my LinkedIn post. Ask me to share my existing draft if I have not provided it."
+                    >
+                        <span class="suggestion-icon purple">✎</span>
+                        <strong>Improve a draft</strong>
+                        <span>Make your message clearer and stronger.</span>
+                        <span class="suggestion-arrow">↗</span>
+                    </button>
+
+                    <button
+                        class="suggestion-card"
+                        type="button"
+                        data-prompt="Help me write a professional LinkedIn post about a project I worked on. Ask for missing project details instead of inventing them."
+                    >
+                        <span class="suggestion-icon orange">▤</span>
+                        <strong>Share a project</strong>
+                        <span>Explain what you built and learned.</span>
+                        <span class="suggestion-arrow">↗</span>
+                    </button>
+
+                    <button
+                        class="suggestion-card"
+                        type="button"
+                        data-prompt="Write a professional LinkedIn post about a personal achievement or learning milestone. Ask me for details you need."
+                    >
+                        <span class="suggestion-icon green">↗</span>
+                        <strong>Share an achievement</strong>
+                        <span>Turn a milestone into a post.</span>
+                        <span class="suggestion-arrow">↗</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Messages are inserted dynamically by chat.js -->
+            <div
+                id="messages"
+                class="messages hidden"
+                aria-live="polite"
+                aria-relevant="additions"
+            ></div>
+
+            <!-- Loading animation -->
+            <div
+                id="typingIndicator"
+                class="typing-indicator hidden"
+                role="status"
+                aria-live="polite"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+                <span class="typing-text">
+                    Linkora AI is preparing your response…
+                </span>
+            </div>
+        </section>
+
+        <!-- COMPOSER -->
+        <section class="composer-area">
+            <form id="composer" class="composer">
+
+                <!-- Selected attachment chips are inserted by chat.js -->
+                <div
+                    id="attachmentPreview"
+                    class="attachment-preview hidden"
+                    aria-label="Selected attachments"
+                ></div>
+
+                <div class="composer-row">
+                    <button
+                        id="uploadBtn"
+                        class="upload-button"
+                        type="button"
+                        aria-label="Attach a certificate or document"
+                        title="Attach a certificate or document"
+                    >＋</button>
+
+                    <input
+                        id="fileInput"
+                        name="files"
+                        type="file"
+                        hidden
+                        multiple
+                        accept=".pdf,.docx,.txt,.md,.csv,.png,.jpg,.jpeg,.webp"
+                        aria-label="Choose certificates or documents"
+                    >
+
+                    <textarea
+                        id="messageInput"
+                        name="message"
+                        rows="1"
+                        placeholder="Upload a certificate or describe your LinkedIn post..."
+                        aria-label="Your message"
+                        maxlength="10000"
+                    ></textarea>
+
+                    <button
+                        id="sendBtn"
+                        class="send-button"
+                        type="submit"
+                        aria-label="Send message"
+                        title="Send message"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            focusable="false"
+                        >
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="composer-bottom">
+                    <span>Ask follow-up questions to refine your post.</span>
+                    <span>Maximum file size: 10 MB per file</span>
+                </div>
+            </form>
+
+            <p class="disclaimer">
+                AI-generated content may need review. Verify certificate
+                details before publishing on LinkedIn.
+            </p>
+        </section>
+    </main>
+</div>
+
+<!-- LOGIN / REGISTER MODAL -->
+<div
+    class="modal-overlay"
+    id="authModal"
+    aria-hidden="true"
+    hidden
+>
+    <section
+        class="auth-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="authTitle"
+        aria-describedby="authSubtitle"
+    >
+        <button
+            class="modal-close"
+            id="closeAuth"
+            type="button"
+            aria-label="Close authentication popup"
+        >&times;</button>
+
+        <div class="auth-brand-icon">L</div>
+
+        <p class="auth-eyebrow">WELCOME TO LINKORA AI</p>
+
+        <h2 id="authTitle">Welcome back!</h2>
+
+        <p class="auth-subtitle" id="authSubtitle">
+            Log in to continue your journey.
+        </p>
+
+        <form id="authForm" novalidate>
+            <div class="form-field" id="nameField" hidden>
+                <label for="fullName">Full name</label>
+                <input
+                    id="fullName"
+                    name="full_name"
+                    type="text"
+                    autocomplete="name"
+                    placeholder="Enter your full name"
+                >
+                <small class="field-error" id="nameError"></small>
+            </div>
+
+            <div class="form-field">
+                <label for="email">Email address</label>
+                <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    placeholder="you@example.com"
+                    required
+                >
+                <small class="field-error" id="emailError"></small>
+            </div>
+
+            <div class="form-field">
+                <label for="password">Password</label>
+                <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    autocomplete="current-password"
+                    placeholder="Enter your password"
+                    minlength="8"
+                    maxlength="128"
+                    required
+                >
+                <small class="field-error" id="passwordError"></small>
+            </div>
+
+            <div class="form-field" id="confirmPasswordField" hidden>
+                <label for="confirmPassword">Confirm password</label>
+                <input
+                    id="confirmPassword"
+                    name="confirm_password"
+                    type="password"
+                    autocomplete="new-password"
+                    placeholder="Enter your password again"
+                >
+                <small
+                    class="field-error"
+                    id="confirmPasswordError"
+                ></small>
+            </div>
+
+            <p
+                class="auth-message"
+                id="authMessage"
+                role="status"
+                aria-live="polite"
+            ></p>
+
+            <button class="auth-submit" id="authSubmit" type="submit">
+                Log in
+            </button>
+        </form>
+
+        <p class="auth-switch">
+            <span id="switchPrompt">Don't have an account?</span>
+            <button type="button" id="switchAuth">Sign up</button>
+        </p>
+
+        <p class="auth-terms">
+            By continuing, you agree to use Linkora AI responsibly.
+        </p>
+    </section>
+</div>
+
+</body>
+</html>

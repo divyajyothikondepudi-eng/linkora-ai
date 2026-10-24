@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Linkora AI helps you create professional LinkedIn posts from your achievements and certificates.">
+    <title>Linkora AI | Your Professional Writing Partner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <script src="{{ url_for('static', filename='js/home.js') }}" defer></script>
+</head>
+
+<body>
+<header class="navbar">
+    <a href="/" class="brand" aria-label="Linkora AI home">
+        <span class="brand-icon">L</span>
+        <span>Linkora <span class="brand-ai">AI</span></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#about">About</a>
+    </nav>
+
+    <div class="nav-actions">
+        <button class="login-link" type="button" data-open-auth="login">
+            Log in
+        </button>
+        <button class="nav-cta" type="button" data-open-auth="register">
+            Get started <span aria-hidden="true">→</span>
+        </button>
+    </div>
+
+    <button class="mobile-menu" id="mobileMenu"
+            type="button" aria-label="Open navigation"
+            aria-expanded="false" aria-controls="navLinks">
+        ☰
+    </button>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                YOUR AI-POWERED LINKEDIN WRITING PARTNER
+            </div>
+
+            <h1>
+                Turn your achievements into
+                <span>meaningful LinkedIn posts.</span>
+            </h1>
+
+            <p class="hero-description">
+                From certificates to career milestones, transform your ideas
+                into professional posts that sound like you. Spend less time
+                struggling with words and more time sharing your journey.
+            </p>
+
+            <div class="hero-actions">
+                <button class="primary-button" type="button"
+                        data-open-auth="register">
+                    Start writing <span aria-hidden="true">→</span>
+                </button>
+
+                <a href="#how-it-works" class="secondary-button">
+                    Discover how it works
+                </a>
+            </div>
+
+            <p class="trust-note">
+                <span aria-hidden="true">✦</span>
+                Your achievements. Your voice. A little AI assistance.
+            </p>
+        </div>
+
+        <div class="preview-wrap">
+            <div class="preview-glow"></div>
+
+            <div class="chat-preview">
+                <div class="preview-header">
+                    <div class="preview-logo">L</div>
+                    <div class="preview-brand">
+                        <strong>Linkora AI</strong>
+                        <span>Your writing assistant</span>
+                    </div>
+                    <span class="online-dot" aria-label="Online"></span>
+                </div>
+
+                <div class="preview-body">
+                    <p class="preview-label">YOU</p>
+                    <div class="user-message">
+                        I completed a Python certification.
+                        Help me share it on LinkedIn.
+                    </div>
+
+                    <p class="preview-label assistant-label">
+                        <span>✦</span> LINKORA AI
+                    </p>
+
+                    <div class="assistant-message">
+                        <strong>A small achievement, a big step forward! 🚀</strong>
+                        <p>
+                            I'm happy to share that I've completed my
+                            Python certification!
+                        </p>
+                        <p>
+                            This experience helped me strengthen my
+                            programming fundamentals and motivated me
+                            to keep learning and building.
+                        </p>
+                        <p>Here's to the next milestone!</p>
+                        <span class="preview-hashtags">
+                            #Python #LearningJourney #KeepGrowing
+                        </span>
+                    </div>
+
+                    <div class="preview-tools">
+                        <span>▢ Copy</span>
+                        <span>✎ Edit</span>
+                        <span>↻ Regenerate</span>
+                    </div>
+                </div>
+
+                <div class="preview-composer">
+                    <span class="preview-plus">＋</span>
+                    <span>Tell me what you'd like to write...</span>
+                    <span class="preview-send">↑</span>
+                </div>
+            </div>
+
+            <div class="floating-note note-top">
+                <span class="note-icon">✦</span>
+                <span>
+                    <strong>Your ideas, refined</strong>
+                    <small>Professional writing made easier</small>
+                </span>
+            </div>
+
+            <div class="floating-note note-bottom">
+                <span class="file-icon">PDF</span>
+                <span>
+                    <strong>Certificate uploaded</strong>
+                    <small>Ready to turn into a post</small>
+                </span>
+                <span class="success-icon">✓</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="features section" id="features">
+        <div class="section-heading">
+            <span class="eyebrow">WHAT YOU CAN DO</span>
+            <h2>Your achievements deserve to be shared.</h2>
+            <p>
+                Turn your learning experiences and career milestones
+                into posts you're proud to publish.
+            </p>
+        </div>
+
+        <div class="feature-grid">
+            <article class="feature-card">
+                <div class="feature-icon blue-icon">▤</div>
+                <h3>Certificate to post</h3>
+                <p>
+                    Upload a certificate and use its details as the
+                    starting point for a LinkedIn post.
+                </p>
+            </article>
+
+            <article class="feature-card">
+                <div class="feature-icon purple-icon">✦</div>
+                <h3>AI-powered writing</h3>
+                <p>
+                    Turn your achievements, ideas and milestones
+                    into clear, professional writing.
+                </p>
+            </article>
+
+            <article class="feature-card">
+                <div class="feature-icon green-icon">✎</div>
+                <h3>Refine your post</h3>
+                <p>
+                    Ask for changes to the tone, wording, length
+                    or hashtags until the post feels right.
+                </p>
+            </article>
+
+            <article class="feature-card">
+                <div class="feature-icon orange-icon">◷</div>
+                <h3>Saved conversations</h3>
+                <p>
+                    Return to previous conversations and continue
+                    working on your ideas.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <section class="how-section section" id="how-it-works">
+        <div class="section-heading">
+            <span class="eyebrow">SIMPLE BY DESIGN</span>
+            <h2>From achievement to post in three steps.</h2>
+            <p>Getting started should feel simple.</p>
+        </div>
+
+        <div class="steps-grid">
+            <article class="step-card">
+                <span class="step-number">01</span>
+                <h3>Share your achievement</h3>
+                <p>
+                    Tell Linkora AI what you accomplished or upload
+                    your certificate.
+                </p>
+            </article>
+
+            <article class="step-card">
+                <span class="step-number">02</span>
+                <h3>Create your post</h3>
+                <p>
+                    Use AI assistance to shape your details into
+                    a professional LinkedIn post.
+                </p>
+            </article>
+
+            <article class="step-card">
+                <span class="step-number">03</span>
+                <h3>Make it yours</h3>
+                <p>
+                    Refine the wording, review your post and copy
+                    it when you're happy with the result.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <section class="about-section section" id="about">
+        <div class="about-mark">L</div>
+        <div class="about-content">
+            <span class="eyebrow">ABOUT LINKORA AI</span>
+            <h2>Your professional journey has a story.</h2>
+            <p>
+                Linkora AI is designed to help students and professionals
+                communicate their progress with confidence. Whether you've
+                completed a course, earned a certificate or learned a new
+                skill, it helps you find the words to share your journey.
+            </p>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <span class="eyebrow">YOUR NEXT MILESTONE STARTS HERE</span>
+        <h2>Ready to share what you've achieved?</h2>
+        <p>Let your next LinkedIn post begin with your story.</p>
+        <button class="primary-button" type="button"
+                data-open-auth="register">
+            Create your account <span aria-hidden="true">→</span>
+        </button>
+    </section>
+</main>
+
+<footer class="footer">
+    <a href="/" class="brand footer-brand">
+        <span class="brand-icon">L</span>
+        <span>Linkora <span class="brand-ai">AI</span></span>
+    </a>
+    <p>Made to help you share your professional journey.</p>
+    <span>© <span id="currentYear"></span> Linkora AI</span>
+</footer>
+
+<!-- Authentication popup -->
+<div class="modal-overlay" id="authModal"
+     aria-hidden="true" hidden>
+    <section class="auth-card" role="dialog"
+             aria-modal="true" aria-labelledby="authTitle">
+
+        <button class="modal-close" id="closeAuth"
+                type="button" aria-label="Close popup">
+            &times;
+        </button>
+
+        <div class="auth-brand-icon">L</div>
+
+        <p class="auth-eyebrow">WELCOME TO LINKORA AI</p>
+        <h2 id="authTitle">Welcome back!</h2>
+        <p class="auth-subtitle" id="authSubtitle">
+            Log in to continue your journey.
+        </p>
+
+        <form id="authForm" novalidate>
+            <div class="form-field" id="nameField" hidden>
+                <label for="fullName">Full name</label>
+                <input id="fullName" name="full_name"
+                       type="text" autocomplete="name"
+                       placeholder="Enter your full name">
+                <small class="field-error" id="nameError"></small>
+            </div>
+
+            <div class="form-field">
+                <label for="email">Email address</label>
+                <input id="email" name="email"
+                       type="email" autocomplete="email"
+                       placeholder="you@example.com" required>
+                <small class="field-error" id="emailError"></small>
+            </div>
+
+            <div class="form-field">
+                <label for="password">Password</label>
+                <input id="password" name="password"
+                       type="password"
+                       autocomplete="current-password"
+                       placeholder="Enter your password"
+                       minlength="8" required>
+                <small class="field-error" id="passwordError"></small>
+            </div>
+
+            <div class="form-field" id="confirmPasswordField" hidden>
+                <label for="confirmPassword">Confirm password</label>
+                <input id="confirmPassword" name="confirm_password"
+                       type="password" autocomplete="new-password"
+                       placeholder="Enter your password again">
+                <small class="field-error" id="confirmPasswordError"></small>
+            </div>
+
+            <p class="auth-message" id="authMessage"
+               role="status" aria-live="polite"></p>
+
+            <button class="auth-submit" id="authSubmit" type="submit">
+                Log in
+            </button>
+        </form>
+
+        <p class="auth-switch">
+            <span id="switchPrompt">Don't have an account?</span>
+            <button type="button" id="switchAuth">Sign up</button>
+        </p>
+
+        <p class="auth-terms">
+            By continuing, you agree to use Linkora AI responsibly.
+        </p>
+    </section>
+</div>
+
+</body>
+</html>
